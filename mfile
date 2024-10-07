@@ -1,0 +1,8 @@
+{
+       "package": "hud",
+       "title": "The hud pkg",
+       "version": "24.10.06",
+       "author": "Kanlaeel and fried",
+       "icon": "scouter.png",
+       "outputFile": true
+}
