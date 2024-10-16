@@ -34,6 +34,9 @@ local playerInfoLabel = Geyser.Label:new({
 }, playerInfoContainer)
 
 local function getPlayerInfoText()
+    local API = API
+    local Player = Player
+    local Room = Room
     local playerInfoText = string.format([[
     <div style="display: flex; justify-content: center; align-items: center; height: 100%%;">
          <table style="width: 100%%; border-spacing: 10px; text-align: left;">

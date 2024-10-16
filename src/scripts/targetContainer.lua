@@ -38,6 +38,7 @@ targetBorderLabel:raise()
 local bars = {}
 
 local function createBar()
+    local Target = Target
     bars["tarPowerGauge"] = Geyser.Gauge:new({
         name = "tarPowerGauge",
         x = "0%",
@@ -83,6 +84,7 @@ tarStatsLabel:setStyleSheet([[
 tarStatsLabel:raise()
 
 local function updateTargetInfo()
+    local Target = Target
     if CK.Target.level > 0 then
         -- Update the power gauge
         bars["tarPowerGauge"]:setValue(Target.Health, Target.MaxHealth)

@@ -27,6 +27,7 @@ borderLabel:setStyleSheet([[
 ]])
 
 local function createAllBars()
+    local Player = Player
     bars["powerGauge"] = Geyser.Gauge:new({
         name = "powerGauge",
         x = "0%",
@@ -224,6 +225,7 @@ end
 
 local function updateGauges()
     configureBarsByRace()
+    local Player = Player
     local powerPercentage = math.floor(math.min(math.max((Player.Pl / Player.MaxPl) * 100, 0), 100))
     local color = getPowerlevelColor(powerPercentage)
     local race = API:getRace()

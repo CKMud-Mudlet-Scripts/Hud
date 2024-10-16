@@ -33,6 +33,7 @@ local statsLabel = Geyser.Label:new({
 }, hud.statsContainer)
 
 local function getStatsText()
+    local Player = Player
     local statsText = string.format([[
 <div style="display: flex; justify-content: center; align-items: center; height: 100%%;">
     <table style="width: 100%%; text-align: left;">
