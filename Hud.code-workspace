@@ -1,0 +1,56 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"Lua.runtime.version": "Lua 5.1",
+		"Lua.diagnostics.globals": [
+			"CK",
+			"cecho",
+			"createStopWatch",
+			"db",
+			"deleteLine",
+			"deleteNamedTimer",
+			"deselect",
+			"disconnect",
+			"display",
+			"echo",
+			"f",
+			"fg",
+			"gagLine",
+			"getFgColor",
+			"getConfig",
+			"getConnectionInfo",
+			"getStopWatchTime",
+			"getTime",
+			"installPackage",
+			"killTrigger",
+			"matches",
+			"multimatches",
+			"msdp",
+			"raiseEvent",
+			"reconnect",
+			"registerAnonymousEventHandler",
+			"registerNamedEventHandler",
+			"registerNamedTimer",
+			"replace",
+			"resetStopWatch",
+			"selectString",
+			"send",
+			"sendMSDP",
+			"setConfig",
+			"setTriggerStayOpen",
+			"tempExactMatchTrigger",
+			"tempLineTrigger",
+			"tempTimer",
+			"tempTrigger",
+			"uninstallPackage",
+			"yajl"
+		],
+		"Lua.workspace.library": [
+			"src/resources"
+		],
+	}
+}
