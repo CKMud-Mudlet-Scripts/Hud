@@ -4,5 +4,6 @@
        "version": "24.10.16",
        "author": "Kanlaeel and fried",
        "icon": "scouter.png",
+       "dependencies": "CK,CK-Map,CK-Chat",
        "outputFile": true
 }
