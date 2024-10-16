@@ -1,3 +1,23 @@
 [
-
+       {
+              "name": "CK-Hud"
+       },
+       {
+              "name": "HUD",
+              "isFolder": "yes",
+              "children": [
+                     {
+                            "name": "gaugesContainer"
+                     },
+                     {
+                            "name": "playerInfoContainer"
+                     },
+                     {
+                            "name": "statsContainer"
+                     },
+                     {
+                            "name": "targetContainer"
+                     }
+              ]
+       }
 ]
