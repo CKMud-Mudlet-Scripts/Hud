@@ -4,7 +4,7 @@ ck:register("__PKGNAME__", "__VERSION__")
 
 local hud = ck:get_table("hud", {rightPanelWidth=40, bottomPanelHeight = 10, adjusted_once=false})
 local chat = ck:get_table("chat")
-local chat = ck:get_table("map")
+local map = ck:get_table("map")
 
 
 hud.rightPanel = Geyser.Container:new({
