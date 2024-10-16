@@ -1,6 +1,7 @@
 local ck = require("CK")
 local Player = ck:get_table("Player")
 local API = ck:get_table("API")
+local Toggles = ck:get_table("Toggles")
 local hud = ck:get_table("hud")
 
 local gaugesContainer = Geyser.Container:new({
