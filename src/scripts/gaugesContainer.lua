@@ -262,9 +262,9 @@ local function updateGauges()
     end
 
     if race == "Demon" then
-        bars["darkEnergyGauge"]:setText("<b>Dark Energy: " .. math.format(Player.DarkEnergy) .. " / 1000 ( " ..
-                                            tostring(math.floor((Player.DarkEnergy / 1000) * 100)) .. "% )</b>")
-        bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, 1000), 0), 1000)
+        bars["darkEnergyGauge"]:setText("<b>Dark Energy: " .. math.format(Player.DarkEnergy) .. " / 3,400 ( " ..
+                                            tostring(math.floor((Player.DarkEnergy / 3400) * 100)) .. "% )</b>")
+        bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, 3400), 0), 3400)
     end
 end
 
