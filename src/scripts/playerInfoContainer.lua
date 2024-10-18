@@ -6,19 +6,19 @@ local hud = ck:get_table("hud")
 
 local playerInfoContainer = Geyser.Container:new({
     name = "playerInfoContainer",
-    x = "15%",
-    y = "90%",
-    width = "15%",
-    height = "10%"
-}, hud.BottomBar)
+    x = "25%",
+    y = "0%",
+    width = "25%",
+    height = "100%"
+}, hud.bottomBar)
 
 local borderLabel = Geyser.Label:new({
     name = "playerBorderLabel",
-    x = "15%",
-    y = "90%",
-    width = "15%",
-    height = "10%"
-}, hud.BottomBar)
+    x = "25%",
+    y = "0%",
+    width = "25%",
+    height = "100%"
+}, hud.bottomBar)
 
 borderLabel:setStyleSheet([[
     border: 4px double green;
@@ -32,6 +32,12 @@ local playerInfoLabel = Geyser.Label:new({
     width = "100%",
     height = "100%"
 }, playerInfoContainer)
+
+registerNamedEventHandler("__PKGNAME__", "Resize Playerinfo", "__PKGNAME__.resize", function()
+    playerInfoContainer:resize("25%", "100%")
+    borderLabel:resize("25%", "100%")
+    playerInfoLabel:resize("100%", "100%")
+end)
 
 local function getPlayerInfoText()
     local API = API

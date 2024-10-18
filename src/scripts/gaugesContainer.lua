@@ -8,18 +8,18 @@ local bars = ck:get_table("hud.gaugeBars")
 local gaugesContainer = Geyser.Container:new({
     name = "gaugesContainer",
     x = "0%",
-    y = "90%",
-    width = "15%",
-    height = "10%"
-}, hud.BottomBar)
+    y = "0%",
+    width = "25%",
+    height = "100%"
+}, hud.bottomBar)
 
 local borderLabel = Geyser.Label:new({
     name = "gaugesBorderLabel",
     x = "0%",
-    y = "90%",
-    width = "15%",
-    height = "10%"
-}, hud.BottomBar)
+    y = "0%",
+    width = "25%",
+    height = "100%"
+}, hud.bottomBar)
 
 borderLabel:setStyleSheet([[
     border: 4px double green;
@@ -196,6 +196,12 @@ local function configureBarsByRace()
     local race = API:getRace()
     configureBars(race)
 end
+
+registerNamedEventHandler("__PKGNAME__", "Resize GaugesContainer", "__PKGNAME__.resize", function()
+    gaugesContainer:resize("25%", "100%")
+    borderLabel:resize("25%", "100%")
+    configureBarsByRace()
+end)
 
 local function getPowerlevelColor(percentage)
     local r, g, b

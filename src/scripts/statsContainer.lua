@@ -5,19 +5,19 @@ local hud = ck:get_table("hud")
 
 local statsContainer = Geyser.Container:new({
     name = "statsContainer",
-    x = "30%",
-    y = "90%",
-    width = "15%",
-    height = "10%"
-}, hud.BottomBar)
+    x = "50%",
+    y = "0%",
+    width = "25%",
+    height = "100%"
+}, hud.bottomBar)
 
 local borderLabel = Geyser.Label:new({
     name = "statsBorderLabel",
-    x = "30%",
-    y = "90%",
-    width = "15%",
-    height = "10%"
-}, hud.BottomBar)
+    x = "50%",
+    y = "0%",
+    width = "25%",
+    height = "100%"
+}, hud.bottomBar)
 
 borderLabel:setStyleSheet([[
     border: 4px double green;
@@ -26,11 +26,19 @@ borderLabel:setStyleSheet([[
 
 local statsLabel = Geyser.Label:new({
     name = "statsLabel",
-    x = "30.5%",
-    y = "90%",
-    width = "14%",
-    height = "10%"
-}, hud.statsContainer)
+    x = "5%",
+    y = "5%",
+    width = "100%",
+    height = "100%"
+}, statsContainer)
+
+
+registerNamedEventHandler("__PKGNAME__", "Resize StatsContainer", "__PKGNAME__.resize", function()
+    statsContainer:resize("25%", "100%")
+    borderLabel:resize("25%", "100%")
+    statsLabel:resize("100%", "100%")
+end)
+
 
 local function getStatsText()
     local Player = Player

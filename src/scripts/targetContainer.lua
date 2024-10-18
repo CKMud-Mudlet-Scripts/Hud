@@ -6,27 +6,30 @@ local hud = ck:get_table("hud")
 
 local gaugeContainer = Geyser.Container:new({
     name = "gaugeContainer",
-    x = "45%",
-    y = "90%",
-    width = "15%",
-    height = "3%"
-}, hud.BottomBar)
+    x = "75%",
+    y = "0%",
+    width = "25%",
+    height = "50%"
+}, hud.bottomBar)
+
+--gaugeContainer:flash()
 
 local targetInfoContainer = Geyser.Container:new({
     name = "targetInfoContainer",
-    x = "46%",
-    y = "93%",
-    width = "13%",
-    height = "7%"
-}, hud.BottomBar)
+    x = "75%",
+    y = "50%",
+    width = "25%",
+    height = "50%"
+}, hud.bottomBar)
+--targetInfoContainer:flash()
 
 local targetBorderLabel = Geyser.Label:new({
     name = "targetBorderLabel",
-    x = "45%",
-    y = "90%",
-    width = "15%",
-    height = "10%"
-}, hud.BottomBar)
+    x = "0%",
+    y = "0%",
+    width = "100%",
+    height = "100%"
+}, hud.bottomBar)
 
 targetBorderLabel:setStyleSheet([[
     border: 4px double green;
@@ -35,26 +38,20 @@ targetBorderLabel:setStyleSheet([[
 
 targetBorderLabel:raise()
 
-local bars = {}
-
-local function createBar()
-    local Target = Target
-    bars["tarPowerGauge"] = Geyser.Gauge:new({
+local tarPowerGauge = Geyser.Gauge:new({
         name = "tarPowerGauge",
         x = "0%",
         y = "0%",
         width = "100%",
         height = "100%"
-    }, gaugeContainer)
+}, gaugeContainer)
 
-    bars["tarPowerGauge"]:setText(f "Health: {Target.Health} / {Target.MaxHealth}")
-    bars["tarPowerGauge"]:setValue(0, 100)
-    bars["tarPowerGauge"]:setAlignment("c")
-    bars["tarPowerGauge"]:setStyleSheet([[background-color: rgb(0, 128, 0);]])
-    bars["tarPowerGauge"].back:setStyleSheet("background-color: black;")
-end
-
-createBar()
+tarPowerGauge:setText(f "Health: 100 / 100")
+tarPowerGauge:setValue(100, 100)
+tarPowerGauge:setAlignment("c")
+tarPowerGauge:setStyleSheet([[background-color: rgb(0, 128, 0);]])
+tarPowerGauge.back:setStyleSheet("background-color: black;")
+tarPowerGauge:hide()
 
 local tarStatsLabel = Geyser.Label:new({
     name = "tarStatsLabel",
@@ -63,6 +60,15 @@ local tarStatsLabel = Geyser.Label:new({
     width = "100%",
     height = "100%"
 }, targetInfoContainer)
+
+registerNamedEventHandler("__PKGNAME__", "Resize TargetContainer", "__PKGNAME__.resize", function()
+    gaugeContainer:resize("25%", "50%")
+    targetInfoContainer:resize("25%", "50%")
+    targetBorderLabel:resize("100%", "100%")
+    tarPowerGauge:resize("100%", "100%")
+    tarStatsLabel:resize("100%", "100%")
+end)
+
 
 local function getTarInfoText()
     local tarInfoText = string.format([[
@@ -87,21 +93,18 @@ local function updateTargetInfo()
     local Target = Target
     if CK.Target.level > 0 then
         -- Update the power gauge
-        bars["tarPowerGauge"]:setValue(Target.Health, Target.MaxHealth)
-        bars["tarPowerGauge"]:setText(f"Health: {Target.Health} / {Target.MaxHealth}")
+        tarPowerGauge:setValue(Target.Health, Target.MaxHealth)
+        tarPowerGauge:setText(f"Health: {Target.Health} / {Target.MaxHealth}")
 
         -- Update and show the stats label with the new information
         tarStatsLabel:echo(getTarInfoText())
 
         -- Ensure all elements are shown
-        targetInfoContainer:show()
-        gaugeContainer:show()
-        targetBorderLabel:show()
-
+        tarPowerGauge:show()
     else
         -- Hide all elements if MaxHealth is <= 0
-        targetInfoContainer:hide()
-        gaugeContainer:hide()
+        tarStatsLabel:clear()
+        tarPowerGauge:hide()
     end
 end
 
