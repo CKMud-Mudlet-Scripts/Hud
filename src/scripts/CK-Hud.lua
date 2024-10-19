@@ -33,7 +33,7 @@ hud.bottomBarBackground = Geyser.Label:new({
 hud.bottomBarBackground:setStyleSheet([[
   background-color: rgba(0, 0, 0, 0%);
   border: 2px solid green;
-  pointer-events: none;                 
+  pointer-events: none;
 ]])
 
 function hud:setborders()
@@ -87,9 +87,9 @@ function hud:movechat()
     local x, y, w, h
     if not ck:feature("hud.vertical") then
         x = 100 - our_right_border()
-        y = 50
+        y = 30
         w = our_right_border()
-        h = 50
+        h = 70
     else
         x = 0
         y = 0
@@ -109,7 +109,7 @@ function hud:movemap()
         x = 100 - our_right_border()
         y = 0
         w = our_right_border()
-        h = 50
+        h = 70
     else
         x = 60
         y = 0
@@ -131,9 +131,29 @@ local function adjust_once()
 end
 
 registerNamedEventHandler("__PKGNAME__", "Move the chat/map windows", "CK.tick", adjust_once)
-registerNamedEventHandler("__PKGNAME__", "Adjust on feature swap", "CK.Feature", function(event, name, value)
-    if name == "hud.vertical" then
-        hud:adjustLayout()
-        hud:setborders()
+registerNamedEventHandler("__PKGNAME__", "Adjust on feature swap", "CK.Feature",
+    function(event, name, value)
+        if name == "hud.vertical" then
+            hud:adjustLayout()
+            hud:setborders()
+        end
     end
-end)
+)
+registerNamedEventHandler("__PKGNAME__", "Set Font for Wide Map", "CK.chat:wide-draw",
+    function()
+        if ck:feature("hud.vertical") then
+            map.console:setFontSize(9)
+        else
+            map.console:setFontSize(14)
+        end
+    end
+)
+registerNamedEventHandler("__PKGNAME__", "Set Font for Narrow Map", "CK.chat:narrow-draw",
+    function()
+        if ck:feature("hud.vertical") then
+            map.console:setFontSize(13)
+        else
+            map.console:setFontSize(18)
+        end
+    end
+)
