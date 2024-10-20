@@ -1,5 +1,5 @@
 local ck = require("CK")
-ck:register("__PKGNAME__", "24.10.16")
+ck:register("__PKGNAME__", "__VERSION__")
 local hud = ck:get_table("hud", {
     bottomPanelHeight = 10,
     rightPanelWidth = 40,
