@@ -67,7 +67,7 @@ local function getStatsText()
         </tr>
     </table>
 </div>
-]], Player.Stats.STR, Player.UBS, Player.Armor, Player.Stats.SPD, Player.LBS, Player.Hitroll, Player.Stats.INT,
+]], Player.Stats.STR, Player.UBS, Player.Armor/80, Player.Stats.SPD, Player.LBS, Player.Hitroll, Player.Stats.INT,
         Player.Hunger, Player.Damroll, Player.Stats.WIS, Player.Thirst, Player.MaxGravity)
     return statsText
 end
