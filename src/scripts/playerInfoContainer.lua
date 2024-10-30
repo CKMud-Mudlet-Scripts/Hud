@@ -60,12 +60,13 @@ local function getPlayerInfoText()
              </tr>
              <tr>
                  <td style="padding-right: 5px;"><b>Zenni:</b></td><td><b>%s</b></td>
+                 <td style="padding-right: 5px;"><b>Token:</b></td><td><b>%s</b></td>
              </tr>
          </table>
      </div>
      ]], API:getName(), API.State:toString(), -- Fetch the player's state
-    API:getRace(), API.Mode:toString(), -- Fetch the player's mode
-    math.format(Player.BasePl), math.format(Room.Gravity), math.format(Player.Zenni))
+        API:getRace(), API.Mode:toString(),   -- Fetch the player's mode
+        math.format(Player.BasePl), math.format(Room.Gravity), math.format(Player.Zenni), math.format(Player.Tokens))
     return playerInfoText
 end
 
