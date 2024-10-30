@@ -4,6 +4,7 @@ local API = ck:get_table("API")
 local Toggles = ck:get_table("Toggles")
 local hud = ck:get_table("hud")
 local bars = ck:get_table("hud.gaugeBars")
+Player.MaxGK = Player.MaxGK or 0
 
 local gaugesContainer = Geyser.Container:new({
     name = "gaugesContainer",
