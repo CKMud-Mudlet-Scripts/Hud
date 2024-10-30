@@ -252,7 +252,7 @@ local function updateGauges()
         bars["fatigueGauge"]:setValue(math.min(math.max(Player.Fatigue, 0), Player.MaxFatigue), Player.MaxFatigue)
     elseif API:isAndroid(race) then
         bars["heatGauge"]:setText(
-            "<b>Heat: " .. math.format(Player.Ki) .. " / " .. math.format(Player.MaxKi) .. " ( " ..
+            "<b>Heat: " .. math.format(Player.MaxKi-Player.Ki) .. " / " .. math.format(Player.MaxKi) .. " ( " ..
                 tostring(100-math.floor((Player.Ki / Player.MaxKi) * 100)) .. "% )</b>")
         bars["heatGauge"]:setValue(math.max(math.min(Player.MaxKi - Player.Ki, Player.MaxKi), 0), Player.MaxKi)
     elseif API:isBioDroid(race) then
