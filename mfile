@@ -1,7 +1,7 @@
 {
        "package": "CK-Hud",
        "title": "The hud",
-       "version": "24.10.29",
+       "version": "24.10.30",
        "author": "Kanlaeel and fried",
        "icon": "scouter.png",
        "dependencies": "CK,CK-Map,CK-Chat",
