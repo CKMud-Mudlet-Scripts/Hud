@@ -8,6 +8,7 @@ local hud = ck:get_table("hud", {
 local chat = ck:get_table("chat")
 local map = ck:get_table("map")
 ck:define_feature("hud.vertical", false)
+ck:define_feature("hud.free_form", false)
 
 local function our_right_border()
     if ck:feature("hud.vertical") then
@@ -84,6 +85,9 @@ registerNamedEventHandler("__PKGNAME__", "Resize Hud on Mudlet Resize", "sysWind
 end)
 
 function hud:movechat()
+    if ck:feature("hud.free_form") then
+        return
+    end
     local x, y, w, h
     if not ck:feature("hud.vertical") then
         x = 100 - our_right_border()
@@ -104,6 +108,9 @@ function hud:movechat()
 end
 
 function hud:movemap()
+    if ck:feature("hud.free_form") then
+        return
+    end
     local x, y, w, h
     if not ck:feature("hud.vertical") then
         x = 100 - our_right_border()
