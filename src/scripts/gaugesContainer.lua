@@ -240,36 +240,36 @@ local function updateGauges()
     bars["powerGauge"].front:setStyleSheet([[background-color: ]] .. color .. [[;]])
     bars["powerGauge"].back:setStyleSheet([[background-color: black;]])
     bars["powerGauge"]:setValue(powerPercentage)
-    bars["powerGauge"]:setText("<b>PL: " .. math.format(Player.Pl) .. " / " .. math.format(Player.MaxPl) .. " ( " ..
+    bars["powerGauge"]:setText("<b>PL: " .. CK.math.format(Player.Pl) .. " / " .. CK.math.format(Player.MaxPl) .. " ( " ..
                                    tostring(math.floor((Player.Pl / Player.MaxPl) * 100)) .. "% )</b>")
 
     if API:has_fatigue(race) then
-        bars["kiGauge"]:setText("<b>Ki: " .. math.format(Player.Ki) .. " / " .. math.format(Player.MaxKi) .. " ( " ..
+        bars["kiGauge"]:setText("<b>Ki: " .. CK.math.format(Player.Ki) .. " / " .. CK.math.format(Player.MaxKi) .. " ( " ..
                                     tostring(math.floor((Player.Ki / Player.MaxKi) * 100)) .. "% )</b>")
         bars["kiGauge"]:setValue(math.min(math.max(Player.Ki, 0), Player.MaxKi), Player.MaxKi)
-        bars["fatigueGauge"]:setText("<b>Fatigue: " .. math.format(Player.Fatigue) .. " / " ..
-                                         math.format(Player.MaxFatigue) .. " ( " ..
+        bars["fatigueGauge"]:setText("<b>Fatigue: " .. CK.math.format(Player.Fatigue) .. " / " ..
+                                         CK.math.format(Player.MaxFatigue) .. " ( " ..
                                          tostring(math.floor((Player.Fatigue / Player.MaxFatigue) * 100)) .. "% )</b>")
         bars["fatigueGauge"]:setValue(math.min(math.max(Player.Fatigue, 0), Player.MaxFatigue), Player.MaxFatigue)
     elseif API:isAndroid(race) then
         bars["heatGauge"]:setText(
-            "<b>Heat: " .. math.format(Player.MaxKi-Player.Ki) .. " / " .. math.format(Player.MaxKi) .. " ( " ..
+            "<b>Heat: " .. CK.math.format(Player.MaxKi-Player.Ki) .. " / " .. CK.math.format(Player.MaxKi) .. " ( " ..
                 tostring(100-math.floor((Player.Ki / Player.MaxKi) * 100)) .. "% )</b>")
         bars["heatGauge"]:setValue(math.max(math.min(Player.MaxKi - Player.Ki, Player.MaxKi), 0), Player.MaxKi)
     elseif API:isBioDroid(race) then
-        bars["biomassGauge"]:setText("<b>Biomass: " .. math.format(Player.Ki) .. " / " .. math.format(Player.MaxKi) ..
+        bars["biomassGauge"]:setText("<b>Biomass: " .. CK.math.format(Player.Ki) .. " / " .. CK.math.format(Player.MaxKi) ..
                                          " ( " .. tostring(math.floor((Player.Ki / Player.MaxKi) * 100)) .. "% )</b>")
         bars["biomassGauge"]:setValue(math.min(math.max(Player.Ki, 0), Player.MaxKi), Player.MaxKi)
     end
 
     if Player.MaxGK > 0 then
         bars["godKiGauge"]:setValue(math.min(math.max(Player.GK, 0), Player.MaxGK), Player.MaxGK)
-        bars["godKiGauge"]:setText("<b>God Ki: " .. math.format(Player.GK) .. " / " .. math.format(Player.MaxGK) ..
+        bars["godKiGauge"]:setText("<b>God Ki: " .. CK.math.format(Player.GK) .. " / " .. CK.math.format(Player.MaxGK) ..
                                        " ( " .. tostring(math.floor((Player.GK / Player.MaxGK) * 100)) .. "% )</b>")
     end
 
     if race == "Demon" then
-        bars["darkEnergyGauge"]:setText("<b>Dark Energy: " .. math.format(Player.DarkEnergy) .. " / 3,400 ( " ..
+        bars["darkEnergyGauge"]:setText("<b>Dark Energy: " .. CK.math.format(Player.DarkEnergy) .. " / 3,400 ( " ..
                                             tostring(math.floor((Player.DarkEnergy / 3400) * 100)) .. "% )</b>")
         bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, 3400), 0), 3400)
     end

@@ -66,7 +66,7 @@ local function getPlayerInfoText()
      </div>
      ]], API:getName(), API.State:toString(), -- Fetch the player's state
         API:getRace(), API.Mode:toString(),   -- Fetch the player's mode
-        math.format(Player.BasePl), math.format(Room.Gravity), math.format(Player.Zenni), math.format(Player.Tokens))
+        CK.math.format(Player.BasePl), CK.math.format(Room.Gravity), CK.math.format(Player.Zenni), CK.math.format(Player.Tokens))
     return playerInfoText
 end
 
