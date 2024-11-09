@@ -114,7 +114,7 @@ local function createAllBars()
         width = "100%",
         height = "20%"
     }, gaugesContainer)
-    bars["darkEnergyGauge"]:setText(f "Dark Energy: {Player.DarkEnergy} / 3600")
+    bars["darkEnergyGauge"]:setText(f "D Energy: {Player.DarkEnergy} / {Player.MaxDarkEnergy}")
     bars["darkEnergyGauge"]:setAlignment("c")
     bars["darkEnergyGauge"]:setValue(0, 100)
     bars["darkEnergyGauge"]:setStyleSheet([[background-color: rgb(75, 0, 130);]])
@@ -145,7 +145,7 @@ local function configureBars(race)
         count = count + 1
     end
 
-    if race == "Demon" then
+    if race == "Demon" or race == "Kaio" then
         count = count + 1
     end
 
@@ -180,7 +180,7 @@ local function configureBars(race)
         bars["biomassGauge"]:move("0%", get_pos())
     end
 
-    if race == "Demon" then
+    if race == "Demon" or race == "Kaio" then
         bars["darkEnergyGauge"]:show()
         bars["darkEnergyGauge"]:resize("100%", size .. "%")
         bars["darkEnergyGauge"]:move("0%", get_pos())
@@ -270,8 +270,12 @@ local function updateGauges()
 
     if race == "Demon" then
         bars["darkEnergyGauge"]:setText("<b>Dark Energy: " .. CK.math.format(Player.DarkEnergy) .. " / 3,400 ( " ..
-                                            tostring(math.floor((Player.DarkEnergy / 3400) * 100)) .. "% )</b>")
-        bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, 3400), 0), 3400)
+                                            tostring(math.floor((Player.DarkEnergy / Player.MaxDarkEnergy) * 100)) .. "% )</b>")
+        bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, 3400), 0), Player.MaxDarkEnergy)
+    elseif race == "Kaio" then
+        bars["darkEnergyGauge"]:setText("<b>Divine Energy: " .. CK.math.format(Player.DarkEnergy) .. " / 3,400 ( " ..
+        tostring(math.floor((Player.DarkEnergy / Player.MaxDarkEnergy) * 100)) .. "% )</b>")
+        bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, 3400), 0), Player.MaxDarkEnergy)
     end
 end
 
