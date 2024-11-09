@@ -269,13 +269,13 @@ local function updateGauges()
     end
 
     if race == "Demon" then
-        bars["darkEnergyGauge"]:setText("<b>Dark Energy: " .. CK.math.format(Player.DarkEnergy) .. " / 3,400 ( " ..
+        bars["darkEnergyGauge"]:setText("<b>Dark Energy: " .. CK.math.format(Player.DarkEnergy) .. " / " .. CK.math.format(Player.MaxDarkEnergy) .. " ( " ..
                                             tostring(math.floor((Player.DarkEnergy / Player.MaxDarkEnergy) * 100)) .. "% )</b>")
-        bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, 3400), 0), Player.MaxDarkEnergy)
+        bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, Player.MaxDarkEnergy), 0), Player.MaxDarkEnergy)
     elseif race == "Kaio" then
-        bars["darkEnergyGauge"]:setText("<b>Divine Energy: " .. CK.math.format(Player.DarkEnergy) .. " / 3,400 ( " ..
+        bars["darkEnergyGauge"]:setText("<b>Divine Energy: " .. CK.math.format(Player.DarkEnergy) .. " / " .. CK.math.format(Player.MaxDarkEnergy) .. " ( " ..
         tostring(math.floor((Player.DarkEnergy / Player.MaxDarkEnergy) * 100)) .. "% )</b>")
-        bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, 3400), 0), Player.MaxDarkEnergy)
+        bars["darkEnergyGauge"]:setValue(math.max(math.min(Player.DarkEnergy, Player.MaxDarkEnergy), 0), Player.MaxDarkEnergy)
     end
 end
 
